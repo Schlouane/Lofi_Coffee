@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIF mit Soundeffekten</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hotspot {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-color: transparent; /* Buttons sind jetzt unsichtbar */
+      border: none;
+      z-index: 2;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Video -->
+  <video autoplay muted loop playsinline>
+    <source src="girl_studying_GIF.mp4" type="video/mp4">
+  </video>
+  
+  <!-- Buttons -->
+  <button class="hotspot" style="top: 69%; left: 0%; width: 25vw; height: 30vh;" onclick="playSound('bed.wav')"></button>
+  <button class="hotspot" style="top: 0%; left: 27%; width: 7vw; height: 40vh;" onclick="playSound('curtain.wav')"></button>
+  <button class="hotspot" style="top: 0%; left: 67%; width: 7vw; height: 40vh;" onclick="playSound('curtain.wav')"></button>
+  <button class="hotspot" style="top: 75%; left: 66%; width: 7vw; height: 40vh;" onclick="playSound('desk drawer.mp3')"></button>
+  <button class="hotspot" style="top: 75%; left: 27%; width: 7vw; height: 40vh;" onclick="playSound('desk drawer.mp3')"></button>
+  <button class="hotspot" style="top: 65%; left: 35%; width: 3vw; height: 5vh;" onclick="playSound('drinking.wav')"></button>
+  <button class="hotspot" style="top: 0%; left: 35%; width: 31vw; height: 32vh;" onclick="playSound('heavy rain.wav')"></button>
+  <button class="hotspot" style="top: 42%; left: 64%; width: 6vw; height: 28vh;" onclick="playSound('lamp switch.wav')"></button>
+  <button class="hotspot" style="top: 55%; left: 28%; width: 7vw; height: 15vh;" onclick="playSound('pen.wav')"></button>
+  <button class="hotspot" style="top: 50%; left: 41%; width: 7vw; height: 10vh;" onclick="playSound('typing.wav')"></button>
+  <button class="hotspot" style="top: 35%; left: 47%;" onclick="playSound('yawn_1.mp3')"></button>
+
+  <!-- Hintergrundmusik -->
+  <audio id="bg-music" src="CHILL_music0.3.mp3" loop autoplay></audio>
+
+  <script>
+    function playSound(file) {
+      const audio = new Audio(file);
+      audio.play();
+    }
+
+    // Autoplay-Fallback für mobile Geräte
+    window.addEventListener('click', () => {
+      const bgMusic = document.getElementById('bg-music');
+      if (bgMusic.paused) {
+        bgMusic.play();
+      }
+    });
+  </script>
+
+</body>
+</html>
